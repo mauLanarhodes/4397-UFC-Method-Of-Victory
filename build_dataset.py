@@ -68,8 +68,10 @@ def history_features(d):
     feats = {}
     for name, g in long.groupby("fighter", sort=False):
         g = g.reset_index(drop=True)
+        dates = g.date.to_numpy()
         for k in range(len(g)):
-            prev = g.iloc[max(0, k - N_HIST):k]
+            end = dates.searchsorted(dates[k], side="left")
+            prev = g.iloc[max(0, end - N_HIST):end]
             cur = g.iloc[k]
             n = len(prev)
             out = {"h_n_prev": n}

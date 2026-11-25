@@ -26,6 +26,7 @@ it is replaced by a blank placeholder, so its result can never leak into the pre
 The trained model lives in models/final_model.joblib (made by train_final.py).
 """
 import os
+from pathlib import Path
 
 import joblib
 import numpy as np
@@ -35,7 +36,10 @@ from build_personal_set import build
 from text_features import clean_profiles, fight_text_features
 from train import CLASSES, history_features, tabular_features
 
-MODEL_PATH = "models/final_model.joblib"
+ROOT = Path(__file__).resolve().parent
+MODEL_PATH = ROOT / "models/final_model.joblib"
+if not MODEL_PATH.exists():
+    MODEL_PATH = ROOT / "final_model.joblib"
 WC_NAMES = {"WomenStrawweight": "Women's Strawweight", "WomenFlyweight": "Women's Flyweight",
             "WomenBantamweight": "Women's Bantamweight", "WomenFeatherweight": "Women's Featherweight",
             "LightHeavyweight": "Light Heavyweight", "CatchWeight": "Catch Weight", "OpenWeight": "Open Weight"}
@@ -64,20 +68,29 @@ def build_features(fights, raw, details, profiles, bundle):
     fights["date"] = pd.to_datetime(fights["date"], format="mixed")
     raw = raw.copy()
     raw["_d"] = pd.to_datetime(raw["date"], format="mixed")
-    # drop the target fights themselves (if present) and add blank placeholders instead
-    for _, f in fights.iterrows():
-        same = (raw._d == f.date) & (((raw.R_fighter == f.R_fighter) & (raw.B_fighter == f.B_fighter)) |
-                                     ((raw.R_fighter == f.B_fighter) & (raw.B_fighter == f.R_fighter)))
-        raw = raw[~same]
-    raw = pd.concat([raw.drop(columns="_d"), pd.DataFrame([_placeholder(f) for _, f in fights.iterrows()])],
-                    ignore_index=True)
-    raw["date"] = pd.to_datetime(raw["date"], format="mixed").dt.strftime("%B %d, %Y")
+    # Each date sees only completed history from earlier dates. A target in a
+    # previous event keeps its real result if it is present in the supplied history.
+    parts = []
+    for date, group in fights.groupby("date", sort=False):
+        names = set(group.R_fighter) | set(group.B_fighter)
+        past = raw.loc[(raw._d < date) &
+                       (raw.R_fighter.isin(names) | raw.B_fighter.isin(names))].drop(columns="_d")
+        placeholders = pd.DataFrame([_placeholder(row) for _, row in group.iterrows()])
+        history = pd.concat([past, placeholders], ignore_index=True) if len(past) else placeholders
+        targets = group[["sample_id", "R_fighter", "B_fighter", "date"]]
+        parts.append(build(history, details, targets))
+    d = pd.concat(parts).set_index("sample_id").loc[fights["sample_id"]].reset_index()
 
-    targets = fights[["sample_id", "R_fighter", "B_fighter"]].assign(date=fights["date"].dt.strftime("%B %d, %Y"))
-    d = build(raw, details, targets)
-    d = d.set_index("sample_id").loc[fights["sample_id"]].reset_index()
+    if bundle.get("feature_set") in ("stats", "matchups"):
+        from accuracy_features import model_features
+        X = model_features(d, bundle["feature_set"], bundle["columns"])
+        return d, X
 
-    # text: training profiles, overridden by any uploaded profiles, encoded with the saved encoder
+    return d, legacy_features(d, profiles, bundle)
+
+
+def legacy_features(d, profiles, bundle):
+    # Training profiles are overridden by any uploaded profiles.
     p = bundle["profiles"]
     if profiles is not None:
         p = pd.concat([p[~p.index.isin(profiles["fighter_name"])].reset_index(),
@@ -92,12 +105,12 @@ def build_features(fights, raw, details, profiles, bundle):
         p = clean_profiles(pd.concat([p.reset_index()[["fighter_name", "wiki_text", "ufc_text"]], extra]))
     F = bundle["encoder"].transform(p)
 
-    X = pd.concat([tabular_features(d.drop(columns=["sample_id"])), history_features(d),
+    X = pd.concat([tabular_features(d.drop(columns=["sample_id"], errors="ignore")), history_features(d),
                    fight_text_features(d, F)], axis=1)
     X = X.loc[:, ~X.columns.duplicated()].reindex(columns=bundle["columns"])
     dummies = [c for c in bundle["columns"] if c.startswith(("weight_class_", "R_Stance_", "B_Stance_"))]
     X[dummies] = X[dummies].fillna(0)
-    return d, X.astype(float)
+    return X.astype(float)
 
 
 def predict_multimodal(upload_dir, model_path=MODEL_PATH):
