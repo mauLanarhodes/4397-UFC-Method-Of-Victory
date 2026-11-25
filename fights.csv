@@ -1,0 +1,21 @@
+sample_id,date,R_fighter,B_fighter,weight_class,title_bout,no_of_rounds
+P01,2025-06-28,Alexandre Pantoja,Kai Kara-France,Flyweight,1,5
+P02,2025-06-28,Beneil Dariush,Renato Moicano,Lightweight,0,3
+P03,2025-06-28,Jack Hermansson,Gregory Rodrigues,Middleweight,0,3
+P04,2025-06-28,Ilia Topuria,Charles Oliveira,Lightweight,1,5
+P05,2025-06-28,Niko Price,Jacobe Smith,Welterweight,0,3
+P06,2025-06-28,Hyder Amil,Jose Delgado,Featherweight,0,3
+P07,2025-06-28,Brandon Royval,Joshua Van,Flyweight,0,3
+P08,2025-06-28,Payton Talbott,Felipe Lima,Bantamweight,0,3
+P09,2025-06-28,Terrance McKinney,Viacheslav Borshchev,Lightweight,0,3
+P10,2025-10-04,Magomed Ankalaev,Alex Pereira,LightHeavyweight,1,5
+P11,2025-10-04,Ateba Gautier,Tre'ston Vines,Middleweight,0,3
+P12,2025-10-04,Edmen Shahbazyan,Andre Muniz,Middleweight,0,3
+P13,2025-10-04,Chris Gutierrez,Farid Basharat,Bantamweight,0,3
+P14,2025-10-04,Jiri Prochazka,Khalil Rountree Jr.,LightHeavyweight,0,3
+P15,2025-10-04,Abus Magomedov,Joe Pyfer,Middleweight,0,3
+P16,2025-10-04,Merab Dvalishvili,Cory Sandhagen,Bantamweight,1,5
+P17,2025-10-04,Punahele Soriano,Nikolay Veretennikov,Welterweight,0,3
+P18,2025-10-04,Ramiz Brahimaj,Austin Vanderford,Welterweight,0,3
+P19,2025-10-04,Veronica Hardy,Brogan Walker,WomenFlyweight,0,3
+P20,2025-10-04,Josh Emmett,Youssef Zalal,Featherweight,0,3

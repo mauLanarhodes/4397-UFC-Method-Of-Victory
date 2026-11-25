@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+catboost_info/
+data/fights.csv
+data/fighter_embeddings.csv
+profile_cache.json
+ufc_debug.html
+*.npy
+.DS_Store
+ufcstats_cache.json
+ufcstats_debug.html

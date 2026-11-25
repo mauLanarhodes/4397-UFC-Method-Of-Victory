@@ -1,0 +1,7 @@
+model,val_macro_f1,val_accuracy,test_macro_f1,test_accuracy
+Majority class,0.233,0.539,0.224,0.507
+Logistic regression (tabular),0.423,0.461,0.416,0.455
+XGBoost: tabular + history (all available),0.438,0.523,0.419,0.486
+XGBoost: tabular only (drop history),0.426,0.515,0.4,0.486
+XGBoost: history only (drop tabular),0.4,0.473,0.41,0.464
+XGBoost: context only,0.344,0.374,0.398,0.428

@@ -1,0 +1,322 @@
+feature,family,gain
+weight_class_Heavyweight,"Context: weight class, rounds, title",0.010271619
+B_Weight_lbs,"Physical: height, reach, weight, age",0.009520009
+R_h_win_sub,History: how recent fights ended,0.00879813
+R_h_win_ko,History: how recent fights ended,0.00857611
+R_avg_SUB_ATT,"Grappling averages (takedowns, subs, control)",0.005772432
+R_Weight_lbs,"Physical: height, reach, weight, age",0.0053684805
+B_txt_kw_grappler,Text: martial arts keywords,0.0051333755
+B_avg_SUB_ATT,"Grappling averages (takedowns, subs, control)",0.005102479
+B_Height_cms,"Physical: height, reach, weight, age",0.005004506
+R_avg_opp_REV,Opponent stats (what opponents did to them),0.0049583064
+B_h_finish_rate,History: how recent fights ended,0.0048785717
+txt_any_grappler,Text: martial arts keywords,0.004803573
+R_age,"Physical: height, reach, weight, age",0.0046599526
+R_h_n_prev,History: recent form & activity,0.0043569026
+no_of_rounds,"Context: weight class, rounds, title",0.0042845295
+R_avg_opp_GROUND_att,Opponent stats (what opponents did to them),0.004223127
+diff_h_win_sub,History: how recent fights ended,0.0041977456
+R_Reach_cms,"Physical: height, reach, weight, age",0.0041815815
+R_avg_REV,"Grappling averages (takedowns, subs, control)",0.0041447813
+R_avg_opp_BODY_att,Opponent stats (what opponents did to them),0.0041297465
+B_total_time_fought(seconds),"Record: wins, losses, streaks, win methods",0.004129338
+R_avg_opp_LEG_att,Opponent stats (what opponents did to them),0.004070912
+B_age,"Physical: height, reach, weight, age",0.0040553687
+weight_class_Lightweight,"Context: weight class, rounds, title",0.004005865
+diff_h_loss_sub,History: how recent fights ended,0.00398733
+B_avg_opp_REV,Opponent stats (what opponents did to them),0.0039658016
+R_avg_KD,"Striking averages (strikes, knockdowns)",0.0039521363
+B_avg_opp_KD,Opponent stats (what opponents did to them),0.0039455285
+R_h_avg_rounds,History: recent form & activity,0.003940309
+B_avg_KD,"Striking averages (strikes, knockdowns)",0.0039308663
+B_avg_opp_SIG_STR_att,Opponent stats (what opponents did to them),0.0039179977
+B_avg_opp_LEG_att,Opponent stats (what opponents did to them),0.0038913365
+R_current_win_streak,"Record: wins, losses, streaks, win methods",0.003853184
+R_txt_tfidf_4,Text: TF-IDF word summary,0.0038483609
+R_txt_tfidf_12,Text: TF-IDF word summary,0.0038265318
+B_h_win_sub,History: how recent fights ended,0.003783431
+R_h_loss_sub,History: how recent fights ended,0.0037717647
+B_avg_opp_GROUND_landed,Opponent stats (what opponents did to them),0.0037695742
+B_avg_TOTAL_STR_att,"Striking averages (strikes, knockdowns)",0.0037687714
+B_avg_TOTAL_STR_landed,"Striking averages (strikes, knockdowns)",0.003767883
+diff_avg_DISTANCE_att,"Striking averages (strikes, knockdowns)",0.0037665323
+B_avg_opp_TOTAL_STR_att,Opponent stats (what opponents did to them),0.0037458122
+R_avg_SIG_STR_att,"Striking averages (strikes, knockdowns)",0.0037359432
+B_h_avg_rounds,History: recent form & activity,0.0037344291
+B_avg_opp_SUB_ATT,Opponent stats (what opponents did to them),0.0037245755
+B_Reach_cms,"Physical: height, reach, weight, age",0.003715722
+diff_avg_REV,"Grappling averages (takedowns, subs, control)",0.0037052878
+weight_class_Bantamweight,"Context: weight class, rounds, title",0.0037048936
+diff_avg_opp_REV,Opponent stats (what opponents did to them),0.0037033602
+B_txt_tfidf_14,Text: TF-IDF word summary,0.003702453
+R_avg_opp_SUB_ATT,Opponent stats (what opponents did to them),0.0037015427
+R_avg_DISTANCE_att,"Striking averages (strikes, knockdowns)",0.00369252
+B_h_loss_sub,History: how recent fights ended,0.0036839645
+R_avg_DISTANCE_landed,"Striking averages (strikes, knockdowns)",0.0036825642
+R_avg_opp_LEG_landed,Opponent stats (what opponents did to them),0.0036817682
+R_txt_tfidf_1,Text: TF-IDF word summary,0.0036749386
+B_txt_tfidf_6,Text: TF-IDF word summary,0.0036739246
+diff_total_time_fought(seconds),"Record: wins, losses, streaks, win methods",0.0036721318
+B_wins,"Record: wins, losses, streaks, win methods",0.0036712028
+R_avg_LEG_att,"Striking averages (strikes, knockdowns)",0.0036650877
+B_avg_opp_HEAD_att,Opponent stats (what opponents did to them),0.003659958
+B_avg_opp_LEG_landed,Opponent stats (what opponents did to them),0.0036562972
+R_txt_tfidf_5,Text: TF-IDF word summary,0.0036450822
+R_avg_opp_DISTANCE_att,Opponent stats (what opponents did to them),0.0036334512
+R_h_loss_ko,History: how recent fights ended,0.0036250162
+B_txt_tfidf_0,Text: TF-IDF word summary,0.0036154543
+R_avg_opp_CLINCH_att,Opponent stats (what opponents did to them),0.0036095888
+R_avg_TOTAL_STR_att,"Striking averages (strikes, knockdowns)",0.0036019296
+diff_avg_SUB_ATT,"Grappling averages (takedowns, subs, control)",0.0035748947
+R_h_win_rate,History: recent form & activity,0.0035729718
+B_total_rounds_fought,"Record: wins, losses, streaks, win methods",0.0035685096
+B_losses,"Record: wins, losses, streaks, win methods",0.003567615
+R_total_rounds_fought,"Record: wins, losses, streaks, win methods",0.0035586655
+diff_avg_SIG_STR_att,"Striking averages (strikes, knockdowns)",0.00355759
+diff_current_win_streak,"Record: wins, losses, streaks, win methods",0.003539269
+B_h_win_dec,History: how recent fights ended,0.003531336
+R_avg_TD_att,"Grappling averages (takedowns, subs, control)",0.0035238243
+R_avg_TOTAL_STR_landed,"Striking averages (strikes, knockdowns)",0.0035234876
+B_avg_DISTANCE_att,"Striking averages (strikes, knockdowns)",0.003519779
+diff_avg_KD,"Striking averages (strikes, knockdowns)",0.003514991
+diff_avg_opp_SUB_ATT,Opponent stats (what opponents did to them),0.0035145343
+B_avg_opp_CTRL_time(seconds),Opponent stats (what opponents did to them),0.0035020332
+B_avg_opp_TD_landed,Opponent stats (what opponents did to them),0.003501781
+B_txt_tfidf_2,Text: TF-IDF word summary,0.0034906897
+R_avg_TD_landed,"Grappling averages (takedowns, subs, control)",0.0034896233
+R_txt_tfidf_15,Text: TF-IDF word summary,0.0034876806
+R_avg_TD_pct,"Grappling averages (takedowns, subs, control)",0.0034817928
+diff_avg_opp_LEG_att,Opponent stats (what opponents did to them),0.0034735338
+diff_Weight_lbs,"Physical: height, reach, weight, age",0.0034724816
+diff_avg_LEG_att,"Striking averages (strikes, knockdowns)",0.003457921
+R_avg_SIG_STR_pct,"Striking averages (strikes, knockdowns)",0.0034522987
+B_avg_opp_SIG_STR_pct,Opponent stats (what opponents did to them),0.0034501448
+diff_avg_opp_BODY_landed,Opponent stats (what opponents did to them),0.0034492805
+R_txt_tfidf_11,Text: TF-IDF word summary,0.0034480963
+R_avg_opp_DISTANCE_landed,Opponent stats (what opponents did to them),0.0034422923
+diff_avg_opp_TOTAL_STR_att,Opponent stats (what opponents did to them),0.0034411713
+diff_avg_opp_CLINCH_landed,Opponent stats (what opponents did to them),0.0034361165
+diff_avg_GROUND_att,"Grappling averages (takedowns, subs, control)",0.0034325873
+B_avg_HEAD_att,"Striking averages (strikes, knockdowns)",0.0034318138
+R_txt_kw_boxing,Text: martial arts keywords,0.0034265178
+B_avg_opp_DISTANCE_att,Opponent stats (what opponents did to them),0.0034255274
+R_Height_cms,"Physical: height, reach, weight, age",0.0034222014
+weight_class_WomenStrawweight,"Context: weight class, rounds, title",0.003421801
+R_avg_LEG_landed,"Striking averages (strikes, knockdowns)",0.0034136525
+R_avg_SIG_STR_landed,"Striking averages (strikes, knockdowns)",0.0034059335
+R_avg_opp_CLINCH_landed,Opponent stats (what opponents did to them),0.00340479
+diff_avg_opp_KD,Opponent stats (what opponents did to them),0.0033980738
+diff_wins,"Record: wins, losses, streaks, win methods",0.0033953446
+R_txt_tfidf_2,Text: TF-IDF word summary,0.0033903674
+B_avg_REV,"Grappling averages (takedowns, subs, control)",0.0033873902
+B_avg_opp_TOTAL_STR_landed,Opponent stats (what opponents did to them),0.0033837252
+R_avg_opp_KD,Opponent stats (what opponents did to them),0.0033797915
+R_avg_CLINCH_landed,"Grappling averages (takedowns, subs, control)",0.0033746301
+R_avg_opp_CTRL_time(seconds),Opponent stats (what opponents did to them),0.0033729146
+R_txt_tfidf_3,Text: TF-IDF word summary,0.003368019
+B_avg_TD_att,"Grappling averages (takedowns, subs, control)",0.0033633895
+B_avg_DISTANCE_landed,"Striking averages (strikes, knockdowns)",0.00336296
+diff_avg_opp_GROUND_landed,Opponent stats (what opponents did to them),0.0033530921
+R_longest_win_streak,"Record: wins, losses, streaks, win methods",0.0033500823
+diff_h_finish_rate,History: how recent fights ended,0.003349476
+R_avg_BODY_att,"Striking averages (strikes, knockdowns)",0.0033483715
+R_avg_CLINCH_att,"Grappling averages (takedowns, subs, control)",0.0033482308
+B_txt_tfidf_15,Text: TF-IDF word summary,0.0033381376
+B_avg_SIG_STR_att,"Striking averages (strikes, knockdowns)",0.0033379733
+R_avg_HEAD_landed,"Striking averages (strikes, knockdowns)",0.0033362769
+diff_h_days_since,History: recent form & activity,0.0033356883
+R_avg_opp_TD_pct,Opponent stats (what opponents did to them),0.003332102
+B_current_win_streak,"Record: wins, losses, streaks, win methods",0.0033319916
+B_txt_tfidf_11,Text: TF-IDF word summary,0.0033318594
+R_avg_opp_GROUND_landed,Opponent stats (what opponents did to them),0.0033306475
+diff_avg_DISTANCE_landed,"Striking averages (strikes, knockdowns)",0.0033242316
+diff_avg_opp_BODY_att,Opponent stats (what opponents did to them),0.003323485
+R_avg_opp_TD_att,Opponent stats (what opponents did to them),0.003323336
+diff_avg_GROUND_landed,"Grappling averages (takedowns, subs, control)",0.0033146986
+R_txt_text_words,Text: profile exists / length,0.0033128306
+B_avg_CLINCH_att,"Grappling averages (takedowns, subs, control)",0.0033127158
+B_avg_TD_landed,"Grappling averages (takedowns, subs, control)",0.0033081467
+B_txt_tfidf_12,Text: TF-IDF word summary,0.0033055977
+R_txt_tfidf_14,Text: TF-IDF word summary,0.0033008836
+B_txt_tfidf_10,Text: TF-IDF word summary,0.0032981895
+diff_total_title_bouts,"Record: wins, losses, streaks, win methods",0.003297557
+diff_avg_LEG_landed,"Striking averages (strikes, knockdowns)",0.0032958705
+B_txt_tfidf_13,Text: TF-IDF word summary,0.0032950107
+B_avg_BODY_att,"Striking averages (strikes, knockdowns)",0.0032824562
+diff_avg_opp_DISTANCE_att,Opponent stats (what opponents did to them),0.0032782196
+diff_avg_opp_CLINCH_att,Opponent stats (what opponents did to them),0.0032780643
+B_txt_tfidf_1,Text: TF-IDF word summary,0.0032746582
+R_avg_opp_TOTAL_STR_landed,Opponent stats (what opponents did to them),0.0032723695
+R_Stance_Orthodox,Physical: stance,0.0032662444
+diff_h_win_dec,History: how recent fights ended,0.003265942
+R_avg_opp_TD_landed,Opponent stats (what opponents did to them),0.0032633995
+B_avg_HEAD_landed,"Striking averages (strikes, knockdowns)",0.0032595664
+R_avg_HEAD_att,"Striking averages (strikes, knockdowns)",0.0032590502
+R_txt_tfidf_7,Text: TF-IDF word summary,0.0032576814
+B_avg_opp_BODY_att,Opponent stats (what opponents did to them),0.0032504168
+diff_avg_BODY_att,"Striking averages (strikes, knockdowns)",0.0032463162
+diff_avg_CLINCH_att,"Grappling averages (takedowns, subs, control)",0.0032425248
+diff_avg_SIG_STR_landed,"Striking averages (strikes, knockdowns)",0.0032413336
+diff_avg_TOTAL_STR_att,"Striking averages (strikes, knockdowns)",0.0032377436
+B_avg_opp_DISTANCE_landed,Opponent stats (what opponents did to them),0.0032360894
+B_avg_CLINCH_landed,"Grappling averages (takedowns, subs, control)",0.0032359376
+R_wins,"Record: wins, losses, streaks, win methods",0.0032343543
+diff_Reach_cms,"Physical: height, reach, weight, age",0.0032308437
+B_avg_SIG_STR_landed,"Striking averages (strikes, knockdowns)",0.003228639
+R_h_finish_rate,History: how recent fights ended,0.00322708
+R_avg_opp_BODY_landed,Opponent stats (what opponents did to them),0.0032244013
+diff_h_avg_rounds,History: recent form & activity,0.0032221072
+B_avg_opp_GROUND_att,Opponent stats (what opponents did to them),0.0032180834
+diff_avg_opp_LEG_landed,Opponent stats (what opponents did to them),0.0032142117
+diff_avg_TOTAL_STR_landed,"Striking averages (strikes, knockdowns)",0.0032131583
+B_h_days_since,History: recent form & activity,0.0032041795
+B_avg_opp_SIG_STR_landed,Opponent stats (what opponents did to them),0.0032017685
+B_avg_opp_TD_att,Opponent stats (what opponents did to them),0.0032017357
+B_avg_opp_HEAD_landed,Opponent stats (what opponents did to them),0.003198405
+B_avg_GROUND_att,"Grappling averages (takedowns, subs, control)",0.0031954374
+txt_any_bjj,Text: martial arts keywords,0.0031944886
+diff_avg_CLINCH_landed,"Grappling averages (takedowns, subs, control)",0.0031901232
+B_avg_LEG_landed,"Striking averages (strikes, knockdowns)",0.0031896003
+R_avg_opp_HEAD_landed,Opponent stats (what opponents did to them),0.0031893742
+diff_total_rounds_fought,"Record: wins, losses, streaks, win methods",0.0031884816
+diff_age,"Physical: height, reach, weight, age",0.0031860103
+R_txt_tfidf_10,Text: TF-IDF word summary,0.0031853232
+R_txt_tfidf_9,Text: TF-IDF word summary,0.003177685
+R_avg_CTRL_time(seconds),"Grappling averages (takedowns, subs, control)",0.00317016
+diff_avg_BODY_landed,"Striking averages (strikes, knockdowns)",0.0031679142
+B_h_loss_ko,History: how recent fights ended,0.0031625978
+R_txt_tfidf_13,Text: TF-IDF word summary,0.0031588569
+B_avg_CTRL_time(seconds),"Grappling averages (takedowns, subs, control)",0.0031583323
+B_txt_text_words,Text: profile exists / length,0.0031578266
+diff_avg_TD_pct,"Grappling averages (takedowns, subs, control)",0.0031546939
+B_txt_tfidf_7,Text: TF-IDF word summary,0.003152571
+B_avg_BODY_landed,"Striking averages (strikes, knockdowns)",0.0031509586
+weight_class_Welterweight,"Context: weight class, rounds, title",0.0031491104
+diff_avg_opp_CTRL_time(seconds),Opponent stats (what opponents did to them),0.0031472333
+diff_avg_HEAD_landed,"Striking averages (strikes, knockdowns)",0.0031454794
+diff_avg_opp_GROUND_att,Opponent stats (what opponents did to them),0.003130393
+R_avg_opp_HEAD_att,Opponent stats (what opponents did to them),0.0031293023
+B_avg_SIG_STR_pct,"Striking averages (strikes, knockdowns)",0.0031279144
+txt_any_striker,Text: martial arts keywords,0.003127015
+diff_avg_HEAD_att,"Striking averages (strikes, knockdowns)",0.0031219875
+diff_h_loss_ko,History: how recent fights ended,0.003121431
+R_h_last_won,History: recent form & activity,0.0031198426
+diff_avg_TD_att,"Grappling averages (takedowns, subs, control)",0.0031195001
+R_txt_kw_bjj,Text: martial arts keywords,0.0031078223
+R_txt_tfidf_8,Text: TF-IDF word summary,0.0031057664
+B_Stance_Orthodox,Physical: stance,0.0031040125
+diff_h_last_won,History: recent form & activity,0.0031036474
+diff_avg_opp_TD_landed,Opponent stats (what opponents did to them),0.003092939
+R_avg_opp_TOTAL_STR_att,Opponent stats (what opponents did to them),0.0030927467
+B_txt_kw_bjj,Text: martial arts keywords,0.0030888196
+diff_avg_opp_SIG_STR_pct,Opponent stats (what opponents did to them),0.0030873597
+R_avg_GROUND_landed,"Grappling averages (takedowns, subs, control)",0.00308641
+diff_avg_opp_HEAD_landed,Opponent stats (what opponents did to them),0.003084562
+diff_avg_opp_SIG_STR_landed,Opponent stats (what opponents did to them),0.0030823182
+B_txt_tfidf_3,Text: TF-IDF word summary,0.0030812065
+B_txt_tfidf_9,Text: TF-IDF word summary,0.003079009
+diff_avg_opp_TD_pct,Opponent stats (what opponents did to them),0.0030759017
+diff_Stance_Southpaw,Physical: stance,0.0030735147
+diff_avg_opp_DISTANCE_landed,Opponent stats (what opponents did to them),0.0030675645
+R_current_lose_streak,"Record: wins, losses, streaks, win methods",0.0030657384
+weight_class_Featherweight,"Context: weight class, rounds, title",0.0030653258
+B_txt_tfidf_4,Text: TF-IDF word summary,0.0030568778
+B_h_last_won,History: recent form & activity,0.0030567683
+R_total_time_fought(seconds),"Record: wins, losses, streaks, win methods",0.0030561066
+B_avg_GROUND_landed,"Grappling averages (takedowns, subs, control)",0.0030550025
+R_txt_tfidf_0,Text: TF-IDF word summary,0.0030530947
+diff_Stance_Orthodox,Physical: stance,0.0030513206
+diff_avg_opp_TOTAL_STR_landed,Opponent stats (what opponents did to them),0.0030474155
+txt_any_taekwondo,Text: martial arts keywords,0.0030473098
+R_txt_tfidf_6,Text: TF-IDF word summary,0.0030455568
+R_h_win_dec,History: how recent fights ended,0.003042472
+R_avg_BODY_landed,"Striking averages (strikes, knockdowns)",0.003041962
+B_avg_TD_pct,"Grappling averages (takedowns, subs, control)",0.003030512
+diff_avg_SIG_STR_pct,"Striking averages (strikes, knockdowns)",0.0030247148
+R_txt_kw_wrestling,Text: martial arts keywords,0.003024609
+R_avg_opp_SIG_STR_pct,Opponent stats (what opponents did to them),0.003022493
+diff_h_win_rate,History: recent form & activity,0.0030220777
+diff_h_n_prev,History: recent form & activity,0.0030218032
+B_avg_opp_CLINCH_att,Opponent stats (what opponents did to them),0.0030175077
+B_txt_tfidf_8,Text: TF-IDF word summary,0.003014281
+diff_avg_opp_TD_att,Opponent stats (what opponents did to them),0.0030029588
+B_avg_LEG_att,"Striking averages (strikes, knockdowns)",0.0029979327
+B_txt_tfidf_5,Text: TF-IDF word summary,0.0029941779
+diff_h_win_ko,History: how recent fights ended,0.0029848584
+R_avg_GROUND_att,"Grappling averages (takedowns, subs, control)",0.0029768168
+diff_avg_opp_HEAD_att,Opponent stats (what opponents did to them),0.0029753044
+R_Stance_Southpaw,Physical: stance,0.0029738792
+diff_losses,"Record: wins, losses, streaks, win methods",0.0029634854
+R_avg_opp_SIG_STR_landed,Opponent stats (what opponents did to them),0.0029613883
+R_txt_kw_karate,Text: martial arts keywords,0.0029605858
+B_h_win_ko,History: how recent fights ended,0.0029524665
+B_avg_opp_TD_pct,Opponent stats (what opponents did to them),0.0029523645
+B_Stance_Southpaw,Physical: stance,0.0029420727
+diff_avg_CTRL_time(seconds),"Grappling averages (takedowns, subs, control)",0.0029407006
+title_bout,"Context: weight class, rounds, title",0.002939454
+R_h_days_since,History: recent form & activity,0.0029362882
+R_txt_kw_striker,Text: martial arts keywords,0.0029273399
+diff_avg_opp_SIG_STR_att,Opponent stats (what opponents did to them),0.0029160439
+B_h_win_rate,History: recent form & activity,0.0029158145
+R_Stance_Switch,Physical: stance,0.0028882124
+B_avg_opp_CLINCH_landed,Opponent stats (what opponents did to them),0.0028718228
+R_avg_opp_SIG_STR_att,Opponent stats (what opponents did to them),0.0028707131
+B_longest_win_streak,"Record: wins, losses, streaks, win methods",0.0028618334
+B_avg_opp_BODY_landed,Opponent stats (what opponents did to them),0.0028544175
+diff_avg_TD_landed,"Grappling averages (takedowns, subs, control)",0.0028223563
+R_txt_kw_kickboxing,Text: martial arts keywords,0.002799596
+diff_Stance_Switch,Physical: stance,0.0027939607
+diff_current_lose_streak,"Record: wins, losses, streaks, win methods",0.0027815492
+diff_longest_win_streak,"Record: wins, losses, streaks, win methods",0.0027807583
+diff_Height_cms,"Physical: height, reach, weight, age",0.002764481
+B_txt_kw_judo,Text: martial arts keywords,0.0027580266
+txt_any_boxing,Text: martial arts keywords,0.0027168607
+R_total_title_bouts,"Record: wins, losses, streaks, win methods",0.0026901802
+R_losses,"Record: wins, losses, streaks, win methods",0.0026621984
+B_txt_kw_wrestling,Text: martial arts keywords,0.0025873438
+B_current_lose_streak,"Record: wins, losses, streaks, win methods",0.0025766143
+weight_class_WomenBantamweight,"Context: weight class, rounds, title",0.0025535505
+txt_any_wrestling,Text: martial arts keywords,0.0025199733
+weight_class_Flyweight,"Context: weight class, rounds, title",0.002497101
+R_txt_kw_judo,Text: martial arts keywords,0.0024956255
+txt_any_muay_thai,Text: martial arts keywords,0.0024844073
+B_total_title_bouts,"Record: wins, losses, streaks, win methods",0.0024711203
+B_Stance_Switch,Physical: stance,0.0024100177
+B_h_n_prev,History: recent form & activity,0.0023321367
+txt_any_kickboxing,Text: martial arts keywords,0.002211914
+B_txt_kw_karate,Text: martial arts keywords,0.0018279657
+R_txt_kw_muay_thai,Text: martial arts keywords,0.0017854294
+B_txt_kw_striker,Text: martial arts keywords,0.0017326975
+txt_any_judo,Text: martial arts keywords,0.0017075356
+B_txt_kw_kickboxing,Text: martial arts keywords,0.0016305798
+B_txt_kw_boxing,Text: martial arts keywords,0.0015994593
+weight_class_LightHeavyweight,"Context: weight class, rounds, title",0.0015097813
+B_txt_kw_taekwondo,Text: martial arts keywords,0.0014688408
+R_txt_kw_grappler,Text: martial arts keywords,0.0014501807
+R_txt_kw_taekwondo,Text: martial arts keywords,0.0013068825
+txt_any_karate,Text: martial arts keywords,0.0012706267
+weight_class_Middleweight,"Context: weight class, rounds, title",0.001168569
+n_debuts,Debut flags,0.0005600943
+B_txt_kw_muay_thai,Text: martial arts keywords,0.0004910282
+diff_is_debut,Debut flags,0.00033044466
+txt_any_sambo,Text: martial arts keywords,0.0
+R_Stance_Sideways,Physical: stance,0.0
+R_Stance_Open Stance,Physical: stance,0.0
+weight_class_WomenFlyweight,"Context: weight class, rounds, title",0.0
+weight_class_WomenFeatherweight,"Context: weight class, rounds, title",0.0
+diff_Stance_Sideways,Physical: stance,0.0
+diff_Stance_Open Stance,Physical: stance,0.0
+B_is_debut,Debut flags,0.0
+diff_draw,"Record: wins, losses, streaks, win methods",0.0
+weight_class_OpenWeight,"Context: weight class, rounds, title",0.0
+B_Stance_Open Stance,Physical: stance,0.0
+B_Stance_Sideways,Physical: stance,0.0
+R_is_debut,Debut flags,0.0
+R_txt_has_profile,Text: profile exists / length,0.0
+R_draw,"Record: wins, losses, streaks, win methods",0.0
+weight_class_CatchWeight,"Context: weight class, rounds, title",0.0
+R_txt_kw_sambo,Text: martial arts keywords,0.0
+B_draw,"Record: wins, losses, streaks, win methods",0.0
+B_txt_has_profile,Text: profile exists / length,0.0
+B_txt_kw_sambo,Text: martial arts keywords,0.0
+txt_both_profiles,Text: profile exists / length,0.0

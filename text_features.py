@@ -108,3 +108,45 @@ def coverage_report(fights, F):
         "fighters": len(has), "fighters_with_text": int(has.sum()),
         "fights": len(fights), "fights_both_have_text": int((r * b).sum()),
     }
+
+
+class TextEncoder:
+    """Saveable version of fighter_text_features (keywords + TF-IDF/SVD).
+
+    fit() learns the TF-IDF vocabulary and SVD on the training profiles;
+    transform() applies the same encoding to any profiles, including fighters
+    the model has never seen. Used by predict.py so new uploads are encoded
+    exactly like the training data. (MiniLM embeddings are not included.)
+    """
+
+    def fit(self, p):
+        self.tf = TfidfVectorizer(min_df=3, max_df=0.5, ngram_range=(1, 2), stop_words="english")
+        M = self.tf.fit_transform(p["clean_text"])
+        self.k = min(N_SVD, M.shape[1] - 1, M.shape[0] - 1)
+        self.svd = TruncatedSVD(n_components=self.k, random_state=0).fit(M)
+        return self
+
+    def transform(self, p):
+        low = p["clean_text"].str.lower()
+        F = pd.DataFrame(index=p.index)
+        F["has_profile"] = p["has_profile"]
+        F["text_words"] = p["clean_text"].str.split().str.len() * p["has_profile"]
+        for k, pat in KEYWORDS.items():
+            F[f"kw_{k}"] = low.str.contains(pat, regex=True).astype(float)
+        Z = self.svd.transform(self.tf.transform(p["clean_text"]))
+        for i in range(self.k):
+            F[f"tfidf_{i}"] = Z[:, i]
+        return F
+
+
+def clean_profiles(p):
+    """Apply load_profiles' cleaning to an in-memory profiles table."""
+    p = p.copy()
+    wiki = p["wiki_text"].fillna("")
+    wiki = wiki.where(~wiki.str.contains("may refer to", case=False), "")
+    p["wiki_text"] = wiki.map(remove_leaky_sentences)
+    p["ufc_text"] = p["ufc_text"].fillna("")
+    p["clean_text"] = (p["ufc_text"] + " " + p["wiki_text"]).str.strip()
+    p["has_profile"] = (p["clean_text"] != "").astype(float)
+    p.loc[p["clean_text"] == "", "clean_text"] = "No profile available."
+    return p.drop_duplicates("fighter_name").set_index("fighter_name")

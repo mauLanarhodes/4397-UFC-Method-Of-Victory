@@ -1,0 +1,14 @@
+family,n_features,f1_drop_mean,f1_drop_sd
+"Physical: height, reach, weight, age",12,0.0367,0.0103
+Text: TF-IDF word summary,32,0.0276,0.011
+Opponent stats (what opponents did to them),72,0.0247,0.0147
+History: recent form & activity,15,0.017,0.0066
+"Record: wins, losses, streaks, win methods",27,0.0105,0.0067
+"Grappling averages (takedowns, subs, control)",30,0.0092,0.0095
+"Context: weight class, rounds, title",16,0.0081,0.0048
+"Striking averages (strikes, knockdowns)",42,0.007,0.0166
+Physical: stance,15,0.002,0.003
+History: how recent fights ended,18,0.0017,0.0086
+Text: martial arts keywords,33,0.0003,0.0025
+Debut flags,4,0.0,0.0
+Text: profile exists / length,5,-0.0023,0.0048

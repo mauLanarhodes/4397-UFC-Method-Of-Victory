@@ -5,13 +5,14 @@
 
 Before a UFC fight starts, can we predict **how it will end**: knockout (KO/TKO), submission, or judges' decision? This project combines three kinds of data about the two fighters (stats, recent fight history, and written profiles) and uses only information that was available **before** each fight.
 
-**Best result:** an average of CatBoost, LightGBM and XGBoost reaches **0.454 macro F1** on 2020–21 fights, about double the 0.22 of always guessing "Decision."
+**Best result:** an average of CatBoost, LightGBM and XGBoost reaches **0.454 macro F1** on 2020–21 fights, about double the 0.22 of always guessing "Decision." On our own test set of 20 fights from 2025, four years past the training data, it scores **0.487 macro F1 (11 of 20 correct)**.
 
 ---
 
 ## Contents
 
 1. [The problem](#1-the-problem)
+- [Predicting with predict_multimodal()](#predicting-with-predict_multimodal)
 2. [Data and modalities](#2-data-and-modalities)
 3. [Pipeline and how to run it](#3-pipeline-and-how-to-run-it)
 4. [Features: what helped and what didn't](#4-features-what-helped-and-what-didnt)
@@ -78,6 +79,41 @@ The text profiles are already saved in `data/fighter_profiles.csv`. To rebuild t
 python scrape_profiles.py --data data/data.csv --since 2010 --extra personal_test_set/meta.csv
 python embed_profiles.py     # optional: MiniLM sentence embeddings (downloads a ~90 MB model)
 ```
+
+## Predicting with `predict_multimodal()`
+
+`predict.py` holds the project's entry point. It takes an **upload folder** and returns how each fight is predicted to end.
+
+```python
+from predict import predict_multimodal
+preds = predict_multimodal("personal_test_set/upload")
+```
+
+Or use the harness, which also scores the predictions if the folder has answers:
+
+```bash
+python run.py --input personal_test_set/upload
+# Macro F1: 0.487   Accuracy: 0.550 (11/20)
+```
+
+**Upload folder format**
+
+| File | Required | Contents |
+|---|---|---|
+| `fights.csv` | yes | `sample_id, date, R_fighter, B_fighter, weight_class, title_bout, no_of_rounds` |
+| `raw_fights.csv` | yes | The fighters' UFC fight history, Kaggle raw format (`;`-separated) |
+| `fighter_details.csv` | yes | `fighter_name, Height, Weight, Reach, Stance, DOB` |
+| `fighter_profiles.csv` | no | Text profiles; fighters without one get "No profile available" |
+| `labels.csv` | no | `sample_id, label`; if present, `run.py` prints macro F1, accuracy and a confusion matrix |
+
+**What happens inside, per fight:**
+1. **Blank placeholder:** if the fight is already in `raw_fights.csv`, it's removed and replaced by an empty row with only the date, corners, weight class and rounds. Its result can never leak in.
+2. **Tabular:** pre-fight stats from earlier fights only, using the same math as Kaggle's `data.csv` (`ufc_features.py`).
+3. **History:** each fighter's last 5 fights.
+4. **Text:** keywords + TF-IDF, encoded with the encoder saved at training time, so new fighters are encoded exactly like training fighters.
+5. **Model:** the saved ensemble (CatBoost + LightGBM + XGBoost, 5 seeds each, trained on 2010 to March 2021) averages its probabilities.
+
+The trained model is `models/final_model.joblib` (rebuild with `python train_final.py`, about 3 minutes). It also works for fights that haven't happened yet; just leave them out of `raw_fights.csv` or let the placeholder replace them.
 
 ## 4. Features: what helped and what didn't
 
@@ -201,10 +237,38 @@ Leakage means accidentally giving the model information it couldn't have before 
 | 17 | **Late fusion** (per-modality models) | Worse on validation than early fusion | Keep early fusion |
 | 18 | **Grid-tuned XGBoost, class-weight tuning** | Better on val, not on test | Don't over-tune on 2019 |
 | 19 | **Ensemble** of the top 3 (chosen on 2019) | **0.454 test**, +0.022, statistically significant | **Final model** |
+| 20 | Read the original dataset's code to compute 2025 stats the same way | Its "averages" are exponentially weighted (`ewm(span=3)`), recent fights count more; streaks have a quirk | Re-implemented it in `ufc_features.py`: matches Kaggle on all 136 columns × 6,012 fights |
+| 21 | End-to-end test of the 2025 path on known 2021 fights | 163 of 163 columns identical to the main pipeline | Personal-set stats will be computed exactly like training |
+| 22 | Ran our UFCStats scraper | UFCStats now shows a "Loading…" browser check; scripts are blocked | Switched to the public UFCStats export (Greco1899), converted to Kaggle format |
+| 23 | Checked the converted data against Kaggle | 99.9%+ match on strikes, takedowns, methods; features within 1% (median 99.6%) | Use it for the 2025 fights |
+| 24 | **Final model on the 2025 personal set** | **0.487 macro F1, 11/20 correct**; all 7 KOs right, 1 of 6 submissions | Model generalizes across the 4-year gap; submissions stay hardest |
+| 25 | Built `predict_multimodal()` + `run.py` harness with a saved model | Reproduces the 2025 evaluation exactly (0.487, identical probabilities); handles future fights and fighters with no profile | Required deliverable done |
 
 ## 8. Personal test set
 
-20 real fights from **UFC 317** (June 28, 2025) and **UFC 320** (Oct 4, 2025), four years past the training data: 7 KO/TKO, 6 Submission, 7 Decision. Debut fights were skipped (no stats to use).
+20 real fights from **UFC 317** (June 28, 2025) and **UFC 320** (Oct 4, 2025), four years past the training data: 7 KO/TKO, 6 Submission, 7 Decision. Most debut fights were skipped; one (Tre'ston Vines, P11) slipped through.
+
+### Results on the 2025 fights
+
+The final ensemble is retrained on all fights from 2010 to March 2021, then scored on the 20 fights.
+
+| Model | Macro F1 | Accuracy |
+|---|---|---|
+| **Ensemble, all three modalities** | **0.487** | 11/20 |
+| Ensemble, drop text | 0.396 | 10/20 |
+| Ensemble, drop history | 0.500 | 11/20 |
+| Ensemble, drop tabular | 0.489 | 12/20 |
+| Majority class (always Decision) | 0.173 | 7/20 |
+
+- **Public vs personal:** 0.454 on 2020–21 vs 0.487 on 2025. The model held up across a four-year gap. With only 20 fights, though, the personal score's 95% bootstrap interval is wide (0.28 to 0.68), so the two scores are not meaningfully different.
+- **By class:** all 7 KO/TKOs correct, 3 of 7 decisions, 1 of 6 submissions. That's the same pattern as the public test: submissions are the hardest.
+- **Ablation:** dropping text cost the most here (0.487 → 0.396), but on 20 fights one fight moves macro F1 by about 0.05, so treat this as a hint, not a result.
+- **Missed submissions** were mostly predicted as decisions (Emmett–Zalal, Magomedov–Pyfer, Brahimaj–Vanderford) or KOs (Pantoja–Kara-France, McKinney–Borshchev).
+- Per-fight predictions with probabilities: `results/personal_predictions.csv`.
+
+### How the 2025 stats were built
+
+UFCStats now blocks plain scripts with a browser check, so instead of scraping we used the public UFCStats export at [Greco1899/scrape_ufc_stats](https://github.com/Greco1899/scrape_ufc_stats), converted to the Kaggle raw format by `convert_greco.py`. Checked against Kaggle on 5,904 shared fights: strikes, takedowns, methods and rounds match 99.9%+; control time can differ by 1–2 seconds. Rebuilt features match Kaggle's `data.csv` closely (median 99.6% of values within 1%).
 
 | File | Contents |
 |---|---|
@@ -212,7 +276,14 @@ Leakage means accidentally giving the model information it couldn't have before 
 | `personal_test_set/labels.csv` | The answer key, kept separate |
 | `personal_test_set/README.md` | How fights were chosen; consent notes |
 
-All 40 fighters have text profiles. Still to collect: each fighter's stats as of the day before their fight, rebuilt from UFCStats fight logs the same way as the training data.
+All 40 fighters have text profiles. To rebuild the 2025 rows and rerun the evaluation:
+
+```bash
+python convert_greco.py        # download + convert the UFCStats export (needs internet)
+python evaluate_personal.py    # final ensemble + ablation on the 20 fights (about 8 minutes)
+```
+
+`fights_2025.csv` is already included. `scrape_ufcstats.py` is our direct UFCStats scraper; it worked on sample pages but UFCStats now blocks scripts, so it's kept for reference.
 
 ## 9. Repository layout
 
@@ -224,6 +295,15 @@ All 40 fighters have text profiles. Still to collect: each fighter's stats as of
 ├── compare_models.py       # 9 models, early vs late fusion, ensembles
 ├── scrape_profiles.py      # Wikipedia + UFC.com profiles with leak filter
 ├── embed_profiles.py       # optional MiniLM embeddings
+├── ufc_features.py         # Kaggle feature math, re-implemented and verified
+├── scrape_ufcstats.py      # UFCStats scraper for the personal-set fighters
+├── build_personal_set.py   # model-ready rows for the 2025 fights
+├── convert_greco.py        # public UFCStats export -> Kaggle raw format
+├── evaluate_personal.py    # final ensemble + ablation on the 2025 fights
+├── predict.py              # predict_multimodal(): the entry point
+├── train_final.py          # trains + saves the final model
+├── run.py                  # upload/run harness (predicts and scores a folder)
+├── models/                 # final_model.joblib
 ├── data/                   # Kaggle CSVs + fighter_profiles.csv
 ├── personal_test_set/      # 20 fights from 2025
 ├── results/                # every result table in this README
@@ -234,11 +314,11 @@ All 40 fighters have text profiles. Still to collect: each fighter's stats as of
 
 - **Submissions are hard to predict.** Only about 29% are caught.
 - **Era gap:** the training data ends in March 2021, and the sport keeps changing.
-- **Small personal test set:** 20 fights give noisy scores, so errors will be analyzed fight by fight.
+- **Small personal test set:** 20 fights give noisy scores (95% interval 0.28–0.68).
 - **The text signal is modest** and may partly identify fighters rather than describe style.
 - **Not yet run:** MiniLM embeddings (`embed_profiles.py`).
 
-**For the final:** collect personal-set stats and run the final model on them; compare public vs personal results; build `predict_multimodal()` and the upload/run harness.
+**For the final:** fight-by-fight error analysis, the demo notebook, and the final report.
 
 ## 11. Milestone presentations
 
@@ -248,4 +328,4 @@ Slide decks for each milestone are in [`presentations/`](presentations/).
 
 - **Kaggle:** [UFC-Fight historical data 1993–2021](https://www.kaggle.com/datasets/rajeevw/ufcdata) (rajeevw): `data.csv`, `raw_total_fight_data.csv`, `raw_fighter_details.csv`
 - **Wikipedia** (CC BY-SA) and **UFC.com** athlete pages: fighter profile text in `data/fighter_profiles.csv`, collected for class use
-- **Personal test set results:** UFC 317 and UFC 320 results pages
+- **Personal test set:** UFC 317 and UFC 320 results pages; fight stats and fighter details from the public UFCStats export [Greco1899/scrape_ufc_stats](https://github.com/Greco1899/scrape_ufc_stats)

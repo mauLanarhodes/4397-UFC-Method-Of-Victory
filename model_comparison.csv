@@ -1,0 +1,16 @@
+group,model,val_macro_f1,test_macro_f1,test_accuracy
+A. single model,Logistic regression,0.406,0.407,0.422
+A. single model,Random forest,0.415,0.425,0.5
+A. single model,Extra trees,0.414,0.428,0.5
+A. single model,HistGradientBoosting,0.412,0.401,0.453
+A. single model,LightGBM,0.451,0.431,0.495
+A. single model,CatBoost,0.457,0.432,0.477
+A. single model,XGBoost (current),0.451,0.432,0.477
+A. single model,Neural net (MLP),0.397,0.451,0.48
+A. single model,"XGBoost tuned (6, 0.02, 300, 0.8)",0.443,0.441,0.495
+B. late fusion,Late fusion: average of 3 modality models,0.414,0.443,0.489
+B. late fusion,Late fusion: stacked combiner,0.403,0.422,0.442
+C. ensemble,Average of top 2 on 2019: CatBoost + LightGBM,0.455,0.455,0.507
+C. ensemble,Average of top 3 on 2019: CatBoost + LightGBM + XGBoost,0.457,0.454,0.505
+C. ensemble,Average of top 4 on 2019: CatBoost + LightGBM + XGBoost + XGBoost tuned,0.449,0.448,0.5
+D. class weights,"CatBoost + class weights (np.float64(1.0), np.float64(1.05), np.float64(1.05))",0.459,0.43,0.469

@@ -1,0 +1,21 @@
+sample_id,R_fighter,B_fighter,weight_class,label,predicted,p_DEC,p_KO/TKO,p_SUB,correct
+P01,Alexandre Pantoja,Kai Kara-France,Flyweight,SUB,KO/TKO,0.32,0.35,0.33,False
+P02,Beneil Dariush,Renato Moicano,Lightweight,DEC,SUB,0.25,0.32,0.44,False
+P03,Jack Hermansson,Gregory Rodrigues,Middleweight,KO/TKO,KO/TKO,0.36,0.49,0.15,True
+P04,Ilia Topuria,Charles Oliveira,Lightweight,KO/TKO,KO/TKO,0.35,0.45,0.21,True
+P05,Niko Price,Jacobe Smith,Welterweight,SUB,SUB,0.27,0.36,0.38,True
+P06,Hyder Amil,Jose Delgado,Featherweight,KO/TKO,KO/TKO,0.39,0.41,0.19,True
+P07,Brandon Royval,Joshua Van,Flyweight,DEC,KO/TKO,0.38,0.5,0.11,False
+P08,Payton Talbott,Felipe Lima,Bantamweight,DEC,SUB,0.37,0.26,0.37,False
+P09,Terrance McKinney,Viacheslav Borshchev,Lightweight,SUB,KO/TKO,0.33,0.47,0.2,False
+P10,Magomed Ankalaev,Alex Pereira,LightHeavyweight,KO/TKO,KO/TKO,0.31,0.59,0.1,True
+P11,Ateba Gautier,Tre'ston Vines,Middleweight,KO/TKO,KO/TKO,0.15,0.65,0.2,True
+P12,Edmen Shahbazyan,Andre Muniz,Middleweight,KO/TKO,KO/TKO,0.36,0.49,0.15,True
+P13,Chris Gutierrez,Farid Basharat,Bantamweight,DEC,DEC,0.66,0.2,0.14,True
+P14,Jiri Prochazka,Khalil Rountree Jr.,LightHeavyweight,KO/TKO,KO/TKO,0.34,0.59,0.07,True
+P15,Abus Magomedov,Joe Pyfer,Middleweight,SUB,DEC,0.48,0.36,0.16,False
+P16,Merab Dvalishvili,Cory Sandhagen,Bantamweight,DEC,DEC,0.5,0.33,0.17,True
+P17,Punahele Soriano,Nikolay Veretennikov,Welterweight,DEC,KO/TKO,0.38,0.46,0.16,False
+P18,Ramiz Brahimaj,Austin Vanderford,Welterweight,SUB,DEC,0.36,0.35,0.29,False
+P19,Veronica Hardy,Brogan Walker,WomenFlyweight,DEC,DEC,0.47,0.32,0.21,True
+P20,Josh Emmett,Youssef Zalal,Featherweight,SUB,DEC,0.5,0.36,0.15,False
