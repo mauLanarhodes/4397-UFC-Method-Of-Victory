@@ -39,10 +39,10 @@ def weight_class(fight_type):
     return "CatchWeight"
 
 
-def build(raw, details, targets):
+def build(raw, details, targets=None):
     raw = raw.copy()
     raw["_date"] = pd.to_datetime(raw["date"], format="mixed")
-    raw = raw.sort_values("_date", ascending=False).drop(columns="_date").reset_index(drop=True)
+    raw = raw.sort_values("_date", ascending=False, kind="stable").drop(columns="_date").reset_index(drop=True)
     f = prep_raw(raw)
     feats = fighter_features(f, details)
 
@@ -53,6 +53,10 @@ def build(raw, details, targets):
     d["last_round"] = raw["last_round"].astype(float)
     d["raw_winner"] = raw["Winner"].where(raw["Winner"].notna() & (raw["Winner"] != ""))
     d = d.join(history_features(d))
+
+    if targets is None:
+        d["label"] = d["win_by"].map(method_group).where(d["raw_winner"].notna())
+        return d.drop(columns="raw_winner")
 
     out = []
     for _, t in targets.iterrows():

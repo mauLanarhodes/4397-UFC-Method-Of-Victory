@@ -38,6 +38,9 @@ def tabular_features(d):
     skip = re.compile(r"_h_|^(R|B)_fighter$|Referee|location|Winner|win_by|last_round|date|label")
     cols = [c for c in d.columns if not skip.search(c)]
     X = d[cols].copy()
+    stances = ["Orthodox", "Southpaw", "Switch", "Open Stance", "Sideways"]
+    for col in ("R_Stance", "B_Stance"):
+        X[col] = pd.Categorical(X[col], categories=stances)
     X = pd.get_dummies(X, columns=["weight_class", "R_Stance", "B_Stance"], dtype=float)
     X["title_bout"] = X["title_bout"].astype(float)
     # debut flags: no UFC fights yet, so averages are blank because the fighter is NEW, not average

@@ -16,7 +16,7 @@ import warnings
 import pandas as pd
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
 
-from predict import predict_multimodal
+from predict import MODEL_PATH, predict_multimodal
 from train import CLASSES
 
 warnings.filterwarnings("ignore")
@@ -26,9 +26,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", required=True, help="upload folder")
     ap.add_argument("--out", default=None, help="where to save predictions (default: <input>/predictions.csv)")
+    ap.add_argument("--model", default=MODEL_PATH, help="trained model bundle")
     args = ap.parse_args()
 
-    preds = predict_multimodal(args.input)
+    preds = predict_multimodal(args.input, model_path=args.model)
     out = args.out or os.path.join(args.input, "predictions.csv")
 
     lab_path = os.path.join(args.input, "labels.csv")

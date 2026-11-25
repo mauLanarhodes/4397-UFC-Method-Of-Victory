@@ -130,8 +130,11 @@ def fighter_features(f, details):
         fighter = pd.concat(parts).sort_index()          # newest first (raw order)
         winner = np.where(fighter["opp_fighter"].notna() & (fighter["Winner"] == name), "hero", "opp")
         fighter = fighter.assign(_res=winner)
-        for i, idx in enumerate(fighter.index):
-            prev = fighter.iloc[i + 1:].sort_index(ascending=False)   # older fights, oldest first
+        oldest_first = fighter.iloc[::-1]
+        dates = oldest_first.date.to_numpy()
+        for idx in fighter.index:
+            end = dates.searchsorted(fighter.at[idx, "date"].to_datetime64(), side="left")
+            prev = oldest_first.iloc[:end]
             if len(prev):
                 s = prev[NUMERICAL].ewm(span=3, adjust=False).mean().iloc[-1].to_dict()
             else:
