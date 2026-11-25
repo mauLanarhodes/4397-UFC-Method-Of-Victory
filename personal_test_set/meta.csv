@@ -1,0 +1,21 @@
+sample_id,event,date,weight_class,title_bout,fighter_1,fighter_2
+P01,UFC 317: Topuria vs. Oliveira,2025-06-28,Flyweight,1,Alexandre Pantoja,Kai Kara-France
+P02,UFC 317: Topuria vs. Oliveira,2025-06-28,Lightweight,0,Beneil Dariush,Renato Moicano
+P03,UFC 317: Topuria vs. Oliveira,2025-06-28,Middleweight,0,Gregory Rodrigues,Jack Hermansson
+P04,UFC 317: Topuria vs. Oliveira,2025-06-28,Lightweight,1,Charles Oliveira,Ilia Topuria
+P05,UFC 317: Topuria vs. Oliveira,2025-06-28,Welterweight,0,Jacobe Smith,Niko Price
+P06,UFC 317: Topuria vs. Oliveira,2025-06-28,Featherweight,0,Hyder Amil,Jose Delgado
+P07,UFC 317: Topuria vs. Oliveira,2025-06-28,Flyweight,0,Brandon Royval,Joshua Van
+P08,UFC 317: Topuria vs. Oliveira,2025-06-28,Bantamweight,0,Felipe Lima,Payton Talbott
+P09,UFC 317: Topuria vs. Oliveira,2025-06-28,Lightweight,0,Terrance McKinney,Viacheslav Borshchev
+P10,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Light Heavyweight,1,Alex Pereira,Magomed Ankalaev
+P11,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Middleweight,0,Ateba Gautier,Tre'ston Vines
+P12,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Middleweight,0,Andre Muniz,Edmen Shahbazyan
+P13,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Bantamweight,0,Chris Gutierrez,Farid Basharat
+P14,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Light Heavyweight,0,Jiri Prochazka,Khalil Rountree Jr.
+P15,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Middleweight,0,Abus Magomedov,Joe Pyfer
+P16,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Bantamweight,1,Cory Sandhagen,Merab Dvalishvili
+P17,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Welterweight,0,Nikolay Veretennikov,Punahele Soriano
+P18,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Welterweight,0,Austin Vanderford,Ramiz Brahimaj
+P19,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Women's Flyweight,0,Brogan Walker,Veronica Hardy
+P20,UFC 320: Ankalaev vs. Pereira 2,2025-10-04,Featherweight,0,Josh Emmett,Youssef Zalal

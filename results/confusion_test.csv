@@ -1,0 +1,4 @@
+,pred DEC,pred KO/TKO,pred SUB
+true DEC,154,85,42
+true KO/TKO,55,77,46
+true SUB,46,21,28
