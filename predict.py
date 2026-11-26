@@ -81,6 +81,10 @@ def build_features(fights, raw, details, profiles, bundle):
         parts.append(build(history, details, targets))
     d = pd.concat(parts).set_index("sample_id").loc[fights["sample_id"]].reset_index()
 
+    if bundle.get("feature_set") == "method_rates":
+        from fight_methods import fight_features
+        return d, fight_features(d).reindex(columns=bundle["columns"], fill_value=0)
+
     if bundle.get("feature_set") in ("stats", "matchups"):
         from accuracy_features import model_features
         X = model_features(d, bundle["feature_set"], bundle["columns"])
@@ -129,7 +133,9 @@ def predict_multimodal(upload_dir, model_path=MODEL_PATH):
     P = P / len(bundle["members"])
 
     out = fights[["sample_id", "R_fighter", "B_fighter"]].copy()
-    out["predicted"] = [CLASSES[i] for i in P.argmax(1)]
+    # Use the validation-selected class weights for picks. Keep the raw probabilities.
+    picks = (P * np.asarray(bundle.get("decision_weights", 1.0))).argmax(1)
+    out["predicted"] = [CLASSES[i] for i in picks]
     for i, c in enumerate(CLASSES):
         out[f"p_{c}"] = P[:, i].round(3)
     return out
